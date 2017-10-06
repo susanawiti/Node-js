@@ -1,30 +1,136 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="main.css">
-	<title></title>
-</head>
-<body>
-
-<div class="carousel-container">
-    <div class="left-arrow"></div>
-    <div class="right-arrow"></div>
-    <div class="carousel-image-holder">
-        <img src="http://digitaljournal.com/img/8/7/8/4/4/i/1/1/7/o/ulingan_kids.jpg" />
-        <img src="http://freethoughtblogs.com/taslima/files/2012/06/22-funny2.jpg" />
-        <img src="http://blog.metrotrends.org/wp-content/uploads/2013/09/childPoverty.jpg" /> 
-        <img src="http://www.chinadaily.com.cn/china/images/2010WenUN/attachement/jpg/site1/20100921/0013729ece6b0e01d9691a.jpg" />
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta charset="utf-8" />  
+    <title>Slide</title>  
+    <style type="text/css">  
+        body {  
+            margin: 0;  
+            background: #222;  
+        }  
+        .showSlide {  
+            display: none  
+        }  
+            .showSlide img {  
+                width: 100%;  
+            }  
+        .slide {  
+            max-width: 1000px;  
+            position: relative;  
+            margin: auto;  
+        }  
+        .left, .right {  
+            cursor: pointer;  
+            position: absolute;  
+            top: 50%;  
+            width: auto;  
+            padding: 16px;  
+            margin-top: -22px;  
+            color:#a54700;  
+            font-weight: bold;  
+            font-size: 18px;  
+            transition: 0.6s ease;  
+            border-radius: 0 3px 3px 0;  
+        }  
+        .right {  
+            right: 0;  
+            border-radius: 3px 0 0 3px;  
+        }  
+            .left:hover, .right:hover {  
+                background: #8f7214;  
+                color: #d97f27;
+            }  
+        .content {  
+            color: #ca9e47;  
+            font-size: 30px;  
+            padding: 8px 12px;  
+            position: absolute;  
+            top: 500px;  
+            width: 100%;  
+            text-align: center;  
+        }  
+        .active {  
+            background-color: red;  
+        }  
+        /* Fading animation */  
+       /* .fade {  
+            -webkit-animation-name: fade;  
+            -webkit-animation-duration: 1.5s;  
+            animation-name: fade;  
+            animation-duration: 1.5s;  
+        }  */
+        @-webkit-keyframes showSlide {  
+            from {  
+                opacity: 0.5 
+            }  
+            to {  
+                opacity: 0.5 
+            }  
+        }  
+  
+        @keyframes showSlide {  
+            from {  
+                opacity: .2
+            }  
+            to {  
+                opacity: 0.5 
+            }  
+        }  
+    </style>  
+</head>  
+<body>  
+    <div class="slide">  
+        <div class="showSlide">  
+            <img src="images/download (1).jpg" />  
+            <div class="content">Elegant</div>  
+        </div>  
+        <div class="showSlide">  
+            <img src="images/download (2).jpg" />  
+            <div class="content">Tembea uone mengi</div>  
+        </div>  
+  
+        <div class="showSlide">  
+            <img src="images/download.jpg" />  
+            <div class="content">Increadible sunset by a gate</div>  
+        </div>  
+        <div class="showSlide">  
+            <img src="images/download3.jpg" />  
+            <div class="content">Beautiful</div>  
+        </div>  
+        <!-- Navigation arrows -->  
+        <a class="left" onclick="nextSlide(-1)">&#10094;</a>  
+        <a class="right" onclick="nextSlide(1)">&#10095;</a>  
+    </div>  
+    <div style="text-align: center">
+    	<span class="dot" onclick="currentSlide(1)"></span>
+    	<span class="dot" onclick="currentSlide(2)"></span>
+    	<span class="dot" onclick="currentSlide(3)"></span>
+    	<span class="dot" onclick="currentSlide(4)"></span>
     </div>
-
-
-
-
-
-
-
-
-
-
-      <script type="text/javascript" src="app.js"></script>
-</body>
-</html>
+  
+    <script type="text/javascript">  
+        var slide_index = 1;  
+        displaySlides(slide_index);  
+  
+        function nextSlide(n) {  
+            displaySlides(slide_index += n);  
+        }  
+  
+        function currentSlide(n) {  
+            displaySlides(slide_index = n);  
+        }  
+  
+        function displaySlides(n) {  
+            var i;  
+            var slides = document.getElementsByClassName("showSlide");  
+            if (n > slides.length) { slide_index = 1 }  
+            if (n < 1) { slide_index = slides.length }  
+            for (i = 0; i < slides.length; i++) {  
+                slides[i].style.display = "none";  
+            }  
+            slides[slide_index - 1].style.display = "block";  
+        }  
+    </script>  
+  
+</body>  
+</html>   
